@@ -681,3 +681,81 @@ document.addEventListener('keydown', function (event) {
 });
 
 initProjectCarousel();
+
+
+// ─── CONTACT / FAQ / NEWSLETTER ───────────────────────
+function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    if (!item) return;
+
+    const list = item.parentElement;
+    const shouldOpen = !item.classList.contains('active');
+
+    if (list) {
+        list.querySelectorAll('.faq-item').forEach((faqItem) => {
+            faqItem.classList.remove('active');
+            const faqButton = faqItem.querySelector('.faq-question');
+            if (faqButton) faqButton.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    if (shouldOpen) {
+        item.classList.add('active');
+        button.setAttribute('aria-expanded', 'true');
+    }
+}
+
+function handleContactSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form || !form.checkValidity()) {
+        if (form) form.reportValidity();
+        return;
+    }
+
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const email = String(data.get('email') || '').trim();
+    const subject = String(data.get('subject') || 'Portfolio inquiry').trim();
+    const priority = String(data.get('priority') || 'General').trim();
+    const message = String(data.get('message') || '').trim();
+
+    const body = [
+        `Hi John Christian,`,
+        '',
+        message,
+        '',
+        `Priority: ${priority}`,
+        `From: ${name}`,
+        `Reply to: ${email}`
+    ].join('\n');
+
+    window.location.href = `mailto:johnchristian.lor@email.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function handleNewsletterSubmit(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (!form || !form.checkValidity()) {
+        if (form) form.reportValidity();
+        return;
+    }
+
+    const input = form.querySelector('input[type="email"]');
+    const note = document.getElementById('newsletter-note');
+    const email = input ? input.value.trim() : '';
+    if (!email) return;
+
+    if (note) {
+        note.textContent = 'Opening your email app to confirm the subscription request…';
+        note.classList.add('success');
+    }
+
+    window.location.href = `mailto:johnchristian.lor@email.com?subject=${encodeURIComponent('Newsletter subscription')}&body=${encodeURIComponent(`Please add ${email} to the portfolio newsletter.`)}`;
+}
+
+function handlePlaceholderSocial(event, platform) {
+    event.preventDefault();
+    window.alert(`Add your ${platform} profile URL in the Contact section of index.html.`);
+    return false;
+}

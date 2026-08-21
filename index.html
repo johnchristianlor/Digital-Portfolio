@@ -410,24 +410,138 @@
 </div>
 </section>
 <!-- Contact -->
-<section class="section" id="contact">
+<section class="section contact-section" id="contact">
 <div class="container contact-container hidden-animate">
-<div class="section-header">
+<div class="section-header contact-section-header">
 <span class="tag">Contact</span>
-<h2>Let's <span class="gradient-text">Collaborate</span></h2>
-<p>Have a project in mind or want to discuss the latest tech? I'm just a message away.</p>
+<h2>Let's <span class="gradient-text">Connect</span></h2>
+<p>Have a project, collaboration, or idea in mind? Send a message or connect with me through my socials.</p>
 </div>
-<div class="contact-card glass">
-<div class="contact-actions">
-<a class="btn-primary btn-large" href="mailto:johnchristian.lor@email.com">
-<i class="fas fa-envelope"></i> Send Email
-                    </a>
-<div class="social-row">
-<a class="social-btn" href="https://github.com/johnchristianlor" rel="noopener noreferrer" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a class="social-btn" href="https://www.linkedin.com/in/johnchristianlor13/" rel="noopener noreferrer" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-<a class="social-btn" href="https://www.facebook.com/johnchristian.xiii" rel="noopener noreferrer" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+
+<div class="contact-main-grid">
+    <article class="contact-map-card glass">
+        <div class="contact-map-shell">
+            <div class="contact-map-topbar">
+                <div>
+                    <span class="contact-card-kicker">Location</span>
+                    <h3>My area overview</h3>
+                </div>
+                <div class="map-live-pill"><span class="status-dot"></span> Bagumbong Dulo · Caloocan City</div>
+            </div>
+
+            <div class="static-map-scene map-reference-style" aria-label="Stylized dark map inspired by the uploaded reference, representing Villa Crystal HOA, Bagumbong Dulo, Caloocan City, Philippines">
+                <div class="map-reference-layer"></div>
+                <div class="map-streets-primary street-one"></div>
+                <div class="map-streets-primary street-two"></div>
+                <div class="map-streets-primary street-three"></div>
+                <div class="map-streets-secondary street-four"></div>
+                <div class="map-streets-secondary street-five"></div>
+                <div class="map-streets-secondary street-six"></div>
+                <div class="map-streets-secondary street-seven"></div>
+                <div class="map-water-shape"></div>
+                <span class="map-area-label label-bagumbong">Bagumbong Dulo</span>
+                <span class="map-area-label label-caloocan">Caloocan City</span>
+                <span class="map-road-label label-villa">Villa Crystal HOA</span>
+                <span class="map-road-label label-ph">Philippines</span>
+
+                <button class="map-point accent main-point" aria-label="Main location marker" type="button"><i class="fas fa-bolt"></i></button>
+                <span class="map-point muted point-two"><i class="fas fa-bolt"></i></span>
+                <span class="map-point muted point-three"><i class="fas fa-bolt"></i></span>
+                <span class="map-point muted point-four"><i class="fas fa-bolt"></i></span>
+                <span class="map-point warm point-five"><i class="fas fa-bolt"></i></span>
+
+                <div class="map-floating-card">
+                    <div class="map-card-heading-row">
+                        <div class="map-card-title-wrap">
+                            <div class="map-badge-icon"><i class="fas fa-location-crosshairs"></i></div>
+                            <div>
+                                <div class="map-card-title">Villa Crystal HOA</div>
+                                <div class="map-card-subtitle">Bagumbong Dulo, Caloocan City</div>
+                            </div>
+                        </div>
+                        <span class="map-card-mini-badge">PH</span>
+                    </div>
+                    <div class="map-card-address"><i class="fas fa-location-dot"></i> Villa Crystal HOA, Bagumbong Dulo, Caloocan City, Philippines</div>
+                    <div class="map-card-stats">
+                        <div><small>Email</small><strong>johnchristian.lor@email.com</strong></div>
+                        <div><small>Address</small><strong>Bagumbong Dulo</strong></div>
+                        <a class="map-card-arrow" href="#contact-form" aria-label="Go to contact form"><i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-map-details">
+            <div class="contact-info-item">
+                <span class="contact-info-icon"><i class="fas fa-location-dot"></i></span>
+                <div><small>Address</small><strong>Villa Crystal HOA, Bagumbong Dulo, Caloocan City, Philippines</strong></div>
+            </div>
+            <div class="contact-info-item">
+                <span class="contact-info-icon"><i class="fas fa-envelope"></i></span>
+                <div><small>Email</small><a href="mailto:johnchristian.lor@email.com">johnchristian.lor@email.com</a></div>
+            </div>
+        </div>
+    </article>
+
+    <article class="contact-form-card glass">
+        <div class="contact-card-heading compact-form-heading">
+            <span class="contact-card-icon"><i class="fas fa-paper-plane"></i></span>
+            <div>
+                <span class="contact-card-kicker">Send a message</span>
+                <h3>Tell me about your idea</h3>
+                <p>Clean, compact, and ready for project inquiries.</p>
+            </div>
+        </div>
+        <form class="contact-form compact-contact-form" id="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="contact-form-row">
+                <label class="contact-field">
+                    <span>Name</span>
+                    <input autocomplete="name" name="name" placeholder="Your name" required type="text"/>
+                </label>
+                <label class="contact-field">
+                    <span>Email</span>
+                    <input autocomplete="email" name="email" placeholder="you@example.com" required type="email"/>
+                </label>
+            </div>
+            <div class="contact-form-row contact-form-row-tight">
+                <label class="contact-field">
+                    <span>Subject</span>
+                    <input name="subject" placeholder="Project / collaboration" required type="text"/>
+                </label>
+                <label class="contact-field">
+                    <span>Priority</span>
+                    <select name="priority">
+                        <option>General</option>
+                        <option>Project</option>
+                        <option>Teaching</option>
+                        <option>Consultation</option>
+                    </select>
+                </label>
+            </div>
+            <label class="contact-field">
+                <span>Message</span>
+                <textarea name="message" placeholder="Share a few details about your project, question, or collaboration." required rows="5"></textarea>
+            </label>
+            <button class="btn-primary contact-submit" type="submit">
+                <span>Send Message</span><i class="fas fa-arrow-right"></i>
+            </button>
+            <p class="contact-form-note"><i class="fas fa-shield-halved"></i> This static form securely opens your email app with the message ready to send.</p>
+        </form>
+    </article>
 </div>
-</div>
+
+<div class="contact-social-bar glass">
+    <div class="contact-social-copy">
+        <span class="contact-card-kicker">Find me online</span>
+        <h3>Connect through my socials</h3>
+    </div>
+    <div class="social-links-grid social-bar-grid social-logo-only-grid">
+        <a aria-label="Facebook" class="social-logo-btn facebook" href="https://www.facebook.com/johnchristian.xiii" rel="noopener noreferrer" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a aria-label="GitHub" class="social-logo-btn github" href="https://github.com/johnchristianlor" rel="noopener noreferrer" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a aria-label="LinkedIn" class="social-logo-btn linkedin" href="https://www.linkedin.com/in/johnchristianlor13/" rel="noopener noreferrer" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a aria-label="Email" class="social-logo-btn email" href="mailto:johnchristian.lor@email.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a aria-label="Instagram" class="social-logo-btn instagram" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
 </div>
 </div>
 </section>
