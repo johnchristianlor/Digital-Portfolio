@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" name="viewport"/>
+<title>JCLOR</title>
+<link href="" id="site-favicon" rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="bg-animation">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+</div>
+<!-- Image Preview Modal -->
+<div aria-labelledby="project-modal-title" aria-modal="true" class="modal-overlay project-detail-overlay" id="project-detail-modal" onclick="closeProjectModal()" role="dialog">
+<div class="project-detail-card" onclick="event.stopPropagation()">
+<div class="project-detail-header">
+<div class="project-detail-heading">
+<span class="project-modal-eyebrow" id="project-modal-type">Project Case Study</span>
+<h3 id="project-modal-title">Project Title</h3>
+<div class="project-modal-stack" id="project-modal-stack"></div>
+</div>
+<button aria-label="Close project details" class="project-modal-close" onclick="closeProjectModal()" type="button"><i class="fas fa-times"></i></button>
+</div>
+<div class="project-detail-scroll">
+<div class="project-detail-gallery">
+<div class="project-gallery-stage">
+<button aria-label="Show previous screenshot" class="project-gallery-nav prev" id="project-gallery-prev" type="button"><i class="fas fa-chevron-left"></i></button>
+<img alt="Project system screenshot" id="project-gallery-main" src=""/>
+<button aria-label="Show next screenshot" class="project-gallery-nav next" id="project-gallery-next" type="button"><i class="fas fa-chevron-right"></i></button>
+<span class="project-gallery-label"><i class="fas fa-image"></i> System screenshot</span>
+<span class="project-gallery-counter" id="project-gallery-counter">1 / 1</span>
+</div>
+<div class="project-gallery-thumbnails" id="project-gallery-thumbnails"></div>
+</div>
+<div class="project-detail-info">
+<div class="project-info-copy">
+<span class="project-info-label">Project Overview</span>
+<p id="project-modal-description"></p>
+</div>
+<div class="project-modal-actions">
+<a class="project-link-btn primary" href="#" id="project-modal-live" onclick="return handleProjectLink(event, 'Live Demo')"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a class="project-link-btn" href="#" id="project-modal-github" onclick="return handleProjectLink(event, 'GitHub')"><i class="fab fa-github"></i> GitHub</a>
+</div>
+</div>
+</div>
+</div>
+</div><div class="modal-overlay image-overlay" id="image-modal" onclick="closeImageModal()">
+<span class="close-img-modal">×</span>
+<div class="modal-content-img" onclick="event.stopPropagation()">
+<div class="image-preview-shell">
+<div class="image-preview-head">
+<div class="image-preview-copy">
+<span class="preview-badge" id="modal-preview-badge"><i class="fas fa-image"></i> Preview</span>
+<h4 id="modal-preview-title">Credential Preview</h4>
+<p id="modal-preview-subtitle">Larger elegant preview for certificate and seminar images.</p>
+</div>
+</div>
+<div class="image-stage">
+<img alt="Certificate Preview" id="modal-img-target" src=""/>
+</div>
+</div>
+</div>
+</div>
+<!-- Badges Modal -->
+<div aria-labelledby="badge-modal-title" aria-modal="true" class="modal-overlay list-overlay" id="badge-list-modal" role="dialog">
+<div class="modal-card credential-modal badge-modal glass">
+<div class="modal-header credential-modal-header">
+<div>
+<span class="modal-eyebrow">Visual credentials</span>
+<h3 id="badge-modal-title"><i class="fas fa-award"></i> All Badges</h3>
+<p>A clean gallery for digital badges and achievement marks.</p>
+</div>
+<button aria-label="Close badges" class="close-btn" onclick="closeListModal('badge-list-modal')"><i class="fas fa-times"></i></button>
+</div>
+<div class="modal-body scrollable">
+<div class="badge-list-grid">
+<button aria-label="Preview badge 01" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 01" data-cloudinary-src="badges.0" src=""/></button><button aria-label="Preview badge 02" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 02" data-cloudinary-src="badges.1" src=""/></button><button aria-label="Preview badge 03" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 03" data-cloudinary-src="badges.2" src=""/></button><button aria-label="Preview badge 04" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 04" data-cloudinary-src="badges.3" src=""/></button><button aria-label="Preview badge 05" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 05" data-cloudinary-src="badges.4" src=""/></button><button aria-label="Preview badge 06" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 06" data-cloudinary-src="badges.5" src=""/></button><button aria-label="Preview badge 07" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 07" data-cloudinary-src="badges.6" src=""/></button><button aria-label="Preview badge 08" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 08" data-cloudinary-src="badges.7" src=""/></button><button aria-label="Preview badge 09" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 09" data-cloudinary-src="badges.8" src=""/></button><button aria-label="Preview badge 10" class="badge-list-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 10" data-cloudinary-src="badges.9" src=""/></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Certifications Modal -->
+<div aria-labelledby="cert-modal-title" aria-modal="true" class="modal-overlay list-overlay" id="cert-list-modal" role="dialog">
+<div class="modal-card credential-modal glass">
+<div class="modal-header credential-modal-header">
+<div>
+<span class="modal-eyebrow">Professional development</span>
+<h3 id="cert-modal-title"><i class="fas fa-certificate"></i> All Certifications</h3>
+<p>Credentials, training, and professional learning milestones.</p>
+</div>
+<button aria-label="Close certifications" class="close-btn" onclick="closeListModal('cert-list-modal')"><i class="fas fa-times"></i></button>
+</div>
+<div class="modal-body scrollable">
+<div class="credential-list-grid">
+<article class="credential-list-card">
+<button aria-label="Preview IT Basics certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button">
+<img alt="IT Basics Certification Course certificate preview" data-cloudinary-src="certificates.0.image" src=""/>
+</button>
+<div class="credential-list-copy credential-card-details">
+<h4>IT Basics Certification Course</h4>
+<div class="credential-org-row credential-list-org-row"><p>Programming Hub</p><a class="credential-link" data-cloudinary-fallback-href="certificates.0.image" data-cloudinary-href="certificates.0.link" href="#" rel="noopener noreferrer" target="_blank">View link <i class="fas fa-arrow-up-right-from-square"></i></a></div></div>
+</article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.1.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 02</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.1.image" data-cloudinary-href="certificates.1.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.2.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 03</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.2.image" data-cloudinary-href="certificates.2.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.3.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 04</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.3.image" data-cloudinary-href="certificates.3.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.4.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 05</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.4.image" data-cloudinary-href="certificates.4.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.5.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 06</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.5.image" data-cloudinary-href="certificates.5.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.6.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 07</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.6.image" data-cloudinary-href="certificates.6.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.7.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 08</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.7.image" data-cloudinary-href="certificates.7.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card placeholder-credential"><button aria-label="Preview placeholder certificate" class="credential-thumb portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.8.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Certification Title 09</h4><div class="credential-org-row credential-list-org-row"><p>Add issuing organization</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="certificates.8.image" data-cloudinary-href="certificates.8.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+</div>
+</div>
+</div>
+</div>
+<!-- Seminars Modal -->
+<div aria-labelledby="seminar-modal-title" aria-modal="true" class="modal-overlay list-overlay" id="seminar-list-modal" role="dialog">
+<div class="modal-card credential-modal glass">
+<div class="modal-header credential-modal-header">
+<div>
+<span class="modal-eyebrow">Continuous learning</span>
+<h3 id="seminar-modal-title"><i class="fas fa-users"></i> All Seminars &amp; Workshops</h3>
+<p>Talks, workshops, conferences, and learning events.</p>
+</div>
+<button aria-label="Close seminars" class="close-btn" onclick="closeListModal('seminar-list-modal')"><i class="fas fa-times"></i></button>
+</div>
+<div class="modal-body scrollable">
+<div class="credential-list-grid seminar-list-grid">
+<article class="credential-list-card seminar-item"><button aria-label="Preview seminar highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.0.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 01</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.0.image" data-cloudinary-href="seminars.0.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview workshop highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.1.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 02</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.1.image" data-cloudinary-href="seminars.1.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview workshop highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.2.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 03</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.2.image" data-cloudinary-href="seminars.2.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview seminar highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.3.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 04</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.3.image" data-cloudinary-href="seminars.3.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview conference highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.4.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 05</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.4.image" data-cloudinary-href="seminars.4.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview seminar highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.5.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 06</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.5.image" data-cloudinary-href="seminars.5.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview conference highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.6.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 07</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.6.image" data-cloudinary-href="seminars.6.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview seminar highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.7.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 08</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.7.image" data-cloudinary-href="seminars.7.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+<article class="credential-list-card seminar-item"><button aria-label="Preview workshop highlight" class="credential-thumb seminar-thumb" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.8.image" src=""/></button><div class="credential-list-copy credential-card-details"><h4>Seminar / Workshop Title 09</h4><div class="credential-org-row credential-list-org-row"><p>Add organizer or institution</p><a class="credential-link placeholder-link" data-cloudinary-fallback-href="seminars.8.image" data-cloudinary-href="seminars.8.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></div></article>
+</div>
+</div>
+</div>
+</div>
+<!-- Header -->
+<header class="header">
+<nav class="navbar container">
+<a class="logo" href="#home">
+<span class="logo-bracket">&lt;</span>JCLOR<span class="logo-bracket">/&gt;</span>
+</a>
+<div class="header-actions">
+<ul class="nav-list">
+<li><a class="nav-link" href="#home">Home</a></li>
+<li><a class="nav-link" href="#about">About</a></li>
+<li><a class="nav-link" href="#credentials">Credentials</a></li><li><a class="nav-link" href="#projects">Projects</a></li>
+<li><a class="btn-primary" href="#contact">Get In Touch</a></li>
+</ul>
+<button aria-label="Switch to night mode" class="theme-toggle" id="themeToggle" title="Switch to night mode">
+<canvas aria-hidden="true" height="44" id="toggleStars" width="44"></canvas>
+<span aria-hidden="true" class="toggle-icon toggle-moon"><i class="fas fa-moon"></i></span>
+<span aria-hidden="true" class="toggle-icon toggle-sun"><i class="fas fa-sun"></i></span>
+</button>
+<div aria-label="Toggle navigation" class="menu-toggle" id="mobile-menu" role="button" tabindex="0">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+</div>
+</nav>
+</header>
+<!-- Hero -->
+<section class="hero section" id="home">
+<div class="container hero-wrapper">
+<div class="hero-text hidden-animate">
+<div class="badge pulse-badge">
+<span class="badge-dot"></span> Available for work
+                </div>
+<div class="title-wrapper">
+<h1 class="hero-title">
+                        Hi, I'm <br/>
+<span class="gradient-text" id="typing-text"></span><span class="cursor">|</span>
+</h1>
+</div>
+<h2 aria-label="I am an Educator, a Creative Developer, a Tech Enthusiast, a Web Developer, a Software Developer, and a Digital Creator" class="hero-subtitle dynamic-role-line">
+<span class="role-prefix">I am</span>
+<span class="role-dynamic-wrap"><span class="role-article" id="role-article">an</span><span class="role-dynamic" id="dynamic-role">Educator</span><span aria-hidden="true" class="role-caret"></span></span>
+</h2>
+<p class="hero-description">
+                    Passionate about technology and innovation, I create projects that make ideas actionable and easy to understand.
+                </p>
+<div class="hero-buttons">
+<a class="btn-primary" href="#projects">View Work <i class="fas fa-arrow-right"></i></a>
+<a class="btn-secondary" href="#contact">Contact Me</a>
+</div>
+</div>
+<div class="hero-visual hidden-animate delay-200">
+<div class="profile-card glass">
+<div class="glow-bg"></div>
+<img alt="John Christian Lor" data-cloudinary-src="profile.day" id="profileFrame" src=""/>
+</div>
+</div>
+</div>
+<a aria-label="Scroll to about" class="scroll-down" href="#about">
+<div class="mouse"><div class="wheel"></div></div>
+</a>
+</section>
+<!-- About -->
+<section class="section" id="about">
+<div class="container">
+<div class="section-header hidden-animate">
+<span class="tag">About Me</span>
+<h2>My <span class="gradient-text">Journey</span></h2>
+</div>
+<div class="bento-grid">
+<div class="bento-item glass area-exp hidden-animate">
+<div class="bento-header">
+<div class="icon-box blue"><i class="fas fa-briefcase"></i></div>
+<h3>Experience</h3>
+</div>
+<div class="experience-stack">
+<div class="exp-item">
+<span class="exp-year">Aug 2024 – Present</span>
+<h4 class="exp-role">IT Lecturer</h4>
+<p class="exp-company">Pamantasan ng Lungsod ng Valenzuela</p>
+</div>
+<div class="exp-item">
+<span class="exp-year">Sep 2024 – Present</span>
+<h4 class="exp-role">IT Lecturer</h4>
+<p class="exp-company">College of St. Catherine Quezon City</p>
+</div>
+<div class="exp-item">
+<span class="exp-year">Sep 2023 – Jul 2024</span>
+<h4 class="exp-role">IT Lecturer</h4>
+<p class="exp-company">STI College Caloocan</p>
+</div>
+</div>
+</div>
+<div class="bento-item glass area-edu hidden-animate delay-100">
+<div class="bento-header">
+<div class="icon-box purple"><i class="fas fa-graduation-cap"></i></div>
+<h3>Education</h3>
+</div>
+<div class="education-stack">
+<div class="edu-item">
+<span class="edu-year">2025 – Present</span>
+<h4 class="edu-degree">Master of Information Technology</h4>
+<p class="edu-school">Bulacan State University</p>
+</div>
+<div class="edu-item">
+<span class="edu-year">2019 – 2023</span>
+<h4 class="edu-degree">BS in Information Technology</h4>
+<p class="edu-school">Our Lady of Fatima University</p>
+<small class="edu-honors"><i class="fas fa-award"></i> Cum Laude</small>
+</div>
+</div>
+</div>
+<div class="section-header subsection-header skills-section-header hidden-animate">
+<span class="tag">Technical Skills</span>
+<h2>My <span class="gradient-text">Toolkit</span></h2>
+</div>
+<div class="bento-item glass area-skills hidden-animate delay-200">
+<div class="bento-header">
+<div class="icon-box green"><i class="fas fa-layer-group"></i></div>
+<h3>Core Technologies</h3>
+</div>
+<div class="tags-container">
+<span class="skill-tag java"> <i class="fab fa-java"></i> Java</span>
+<span class="skill-tag csharp"> <i class="fas fa-hashtag"></i> C#</span>
+<span class="skill-tag python"> <i class="fab fa-python"></i> Python</span>
+<span class="skill-tag html"> <i class="fab fa-html5"></i> HTML5</span>
+<span class="skill-tag css"> <i class="fab fa-css3-alt"></i> CSS3</span>
+<span class="skill-tag js"> <i class="fab fa-js"></i> JavaScript</span>
+<span class="skill-tag react"> <i class="fab fa-react"></i> React</span>
+<span class="skill-tag mysql"> <i class="fas fa-database"></i> MySQL</span>
+<span class="skill-tag php"> <i class="fab fa-php"></i> PHP</span>
+<span class="skill-tag laravel"><i class="fab fa-laravel"></i> Laravel</span>
+</div>
+</div>
+</div>
+<div class="credentials-showcase" id="credentials">
+<div class="section-header credentials-main-header hidden-animate">
+<span class="tag">Credentials</span>
+<h2>My <span class="gradient-text">Achievements</span></h2>
+</div>
+<section aria-labelledby="badges-title" class="credential-section badge-section hidden-animate">
+<div class="credential-section-head badge-section-head">
+<div>
+<h3 class="credential-kicker credential-subsection-title" id="badges-title"><i class="fas fa-award"></i> Digital Badges</h3>
+</div>
+<button class="view-all-btn" onclick="openBadgeList()" type="button">See all badges <i class="fas fa-arrow-right"></i></button>
+</div>
+<div class="badge-highlight-grid">
+<button aria-label="Preview badge 01" class="badge-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 01" data-cloudinary-src="badges.0" src=""/></button><button aria-label="Preview badge 02" class="badge-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 02" data-cloudinary-src="badges.1" src=""/></button><button aria-label="Preview badge 03" class="badge-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 03" data-cloudinary-src="badges.2" src=""/></button><button aria-label="Preview badge 04" class="badge-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 04" data-cloudinary-src="badges.3" src=""/></button><button aria-label="Preview badge 05" class="badge-card" onclick="openImageModal(this)" type="button"><img alt="Badge placeholder 05" data-cloudinary-src="badges.4" src=""/></button>
+</div>
+<div class="credential-mobile-action badge-mobile-action"><button class="view-all-btn" onclick="openBadgeList()" type="button">See all badges <i class="fas fa-arrow-right"></i></button></div>
+</section>
+<section aria-labelledby="certifications-title" class="credential-section hidden-animate">
+<div class="credential-section-head">
+<div>
+<h3 class="credential-kicker credential-subsection-title" id="certifications-title"><i class="fas fa-certificate"></i> Certifications</h3>
+</div>
+<button class="view-all-btn" onclick="openCertList()" type="button">See all certifications <i class="fas fa-arrow-right"></i></button>
+</div>
+<div class="highlight-grid">
+<article class="highlight-card featured-credential">
+<div class="highlight-top"><span class="highlight-number">01</span><span class="verified-pill"><i class="fas fa-circle-check"></i> Verified</span></div>
+<button aria-label="Preview IT Basics certificate" class="highlight-media media-certificate portrait-media" onclick="openImageModal(this)" type="button">
+<img alt="IT Basics Certification Course certificate preview" data-cloudinary-src="certificates.0.image" src=""/>
+<span class="media-action"><i class="fas fa-expand"></i> Preview</span>
+</button>
+<h4>IT Basics Certification Course</h4>
+<div class="credential-org-row highlight-org-row"><p>Programming Hub</p><a aria-label="View IT Basics certificate" class="mini-verify-link" data-cloudinary-fallback-href="certificates.0.image" data-cloudinary-href="certificates.0.link" href="#" rel="noopener noreferrer" target="_blank">Verify <i class="fas fa-arrow-up-right-from-square"></i></a></div></article>
+<article class="highlight-card placeholder-credential"><div class="highlight-top"><span class="highlight-number">02</span><span class="draft-pill">Ready to edit</span></div><button aria-label="Preview placeholder certificate" class="highlight-media media-certificate portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.1.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Certification Title 02</h4><div class="credential-org-row highlight-org-row"><p>Add issuing organization</p><a class="mini-verify-link" data-cloudinary-fallback-href="certificates.1.image" data-cloudinary-href="certificates.1.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card placeholder-credential"><div class="highlight-top"><span class="highlight-number">03</span><span class="draft-pill">Ready to edit</span></div><button aria-label="Preview placeholder certificate" class="highlight-media media-certificate portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.2.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Certification Title 03</h4><div class="credential-org-row highlight-org-row"><p>Add issuing organization</p><a class="mini-verify-link" data-cloudinary-fallback-href="certificates.2.image" data-cloudinary-href="certificates.2.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card placeholder-credential"><div class="highlight-top"><span class="highlight-number">04</span><span class="draft-pill">Ready to edit</span></div><button aria-label="Preview placeholder certificate" class="highlight-media media-certificate portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.3.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Certification Title 04</h4><div class="credential-org-row highlight-org-row"><p>Add issuing organization</p><a class="mini-verify-link" data-cloudinary-fallback-href="certificates.3.image" data-cloudinary-href="certificates.3.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card placeholder-credential"><div class="highlight-top"><span class="highlight-number">05</span><span class="draft-pill">Ready to edit</span></div><button aria-label="Preview placeholder certificate" class="highlight-media media-certificate portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.4.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Certification Title 05</h4><div class="credential-org-row highlight-org-row"><p>Add issuing organization</p><a class="mini-verify-link" data-cloudinary-fallback-href="certificates.4.image" data-cloudinary-href="certificates.4.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card placeholder-credential"><div class="highlight-top"><span class="highlight-number">06</span><span class="draft-pill">Ready to edit</span></div><button aria-label="Preview placeholder certificate" class="highlight-media media-certificate portrait-media" onclick="openImageModal(this)" type="button"><img alt="Placeholder certificate image" data-cloudinary-src="certificates.5.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Certification Title 06</h4><div class="credential-org-row highlight-org-row"><p>Add issuing organization</p><a class="mini-verify-link" data-cloudinary-fallback-href="certificates.5.image" data-cloudinary-href="certificates.5.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+</div>
+<div class="credential-mobile-action"><button class="view-all-btn" onclick="openCertList()" type="button">See all certifications <i class="fas fa-arrow-right"></i></button></div>
+</section>
+<section aria-labelledby="seminars-title" class="credential-section seminar-section hidden-animate delay-100">
+<div class="credential-section-head">
+<div>
+<h3 class="credential-kicker credential-subsection-title" id="seminars-title"><i class="fas fa-users"></i> Seminars &amp; Workshops</h3>
+</div>
+<button class="view-all-btn" onclick="openSeminarList()" type="button">See all seminars <i class="fas fa-arrow-right"></i></button>
+</div>
+<div class="highlight-grid seminar-highlight-grid">
+<article class="highlight-card seminar-card"><div class="highlight-top"><span class="highlight-number">01</span><span class="event-pill">Seminar</span></div><button aria-label="Preview seminar highlight" class="highlight-media media-seminar" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.0.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Seminar / Workshop Title 01</h4><div class="credential-org-row highlight-org-row"><p>Add organizer or institution</p><a class="mini-verify-link" data-cloudinary-fallback-href="seminars.0.image" data-cloudinary-href="seminars.0.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card seminar-card"><div class="highlight-top"><span class="highlight-number">02</span><span class="event-pill">Workshop</span></div><button aria-label="Preview workshop highlight" class="highlight-media media-seminar" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.1.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Seminar / Workshop Title 02</h4><div class="credential-org-row highlight-org-row"><p>Add organizer or institution</p><a class="mini-verify-link" data-cloudinary-fallback-href="seminars.1.image" data-cloudinary-href="seminars.1.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card seminar-card"><div class="highlight-top"><span class="highlight-number">03</span><span class="event-pill">Seminar</span></div><button aria-label="Preview seminar highlight" class="highlight-media media-seminar" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.2.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Seminar / Workshop Title 03</h4><div class="credential-org-row highlight-org-row"><p>Add organizer or institution</p><a class="mini-verify-link" data-cloudinary-fallback-href="seminars.2.image" data-cloudinary-href="seminars.2.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card seminar-card"><div class="highlight-top"><span class="highlight-number">04</span><span class="event-pill">Workshop</span></div><button aria-label="Preview workshop highlight" class="highlight-media media-seminar" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.3.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Seminar / Workshop Title 04</h4><div class="credential-org-row highlight-org-row"><p>Add organizer or institution</p><a class="mini-verify-link" data-cloudinary-fallback-href="seminars.3.image" data-cloudinary-href="seminars.3.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card seminar-card"><div class="highlight-top"><span class="highlight-number">05</span><span class="event-pill">Conference</span></div><button aria-label="Preview conference highlight" class="highlight-media media-seminar" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.4.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Seminar / Workshop Title 05</h4><div class="credential-org-row highlight-org-row"><p>Add organizer or institution</p><a class="mini-verify-link" data-cloudinary-fallback-href="seminars.4.image" data-cloudinary-href="seminars.4.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+<article class="highlight-card seminar-card"><div class="highlight-top"><span class="highlight-number">06</span><span class="event-pill">Seminar</span></div><button aria-label="Preview seminar highlight" class="highlight-media media-seminar" onclick="openImageModal(this)" type="button"><img alt="Seminar placeholder image" data-cloudinary-src="seminars.5.image" src=""/><span class="media-action"><i class="fas fa-expand"></i> Preview</span></button><h4>Seminar / Workshop Title 06</h4><div class="credential-org-row highlight-org-row"><p>Add organizer or institution</p><a class="mini-verify-link" data-cloudinary-fallback-href="seminars.5.image" data-cloudinary-href="seminars.5.link" href="#" rel="noopener noreferrer" target="_blank">Add link <i class="fas fa-link"></i></a></div></article>
+</div>
+<div class="credential-mobile-action"><button class="view-all-btn" onclick="openSeminarList()" type="button">See all seminars <i class="fas fa-arrow-right"></i></button></div>
+</section>
+</div>
+</div>
+</section>
+<!-- Projects -->
+<section class="section section-alt" id="projects">
+<div class="container">
+<div class="section-header project-section-header hidden-animate">
+<span class="tag">Portfolio</span>
+<h2>Featured <span class="gradient-text">Projects</span></h2>
+<p class="section-lead">Selected systems presented as interactive case-study cards. Use the carousel controls to explore each project, or click a card to view screenshots and details.</p>
+</div>
+<div aria-label="Featured projects carousel" aria-roledescription="carousel" class="projects-carousel hidden-animate delay-100" id="projects-carousel">
+<div class="projects-carousel-viewport">
+<div class="projects-carousel-track" id="projects-carousel-track">
+<article aria-label="Open E-Commerce Dashboard project details" class="project-showcase-card project-carousel-slide" data-project="ecommerce" onclick="openProjectModal('ecommerce')" onkeydown="handleProjectCardKey(event, 'ecommerce')" role="button" tabindex="0">
+<div class="project-card-media">
+<img alt="E-Commerce Dashboard system preview" data-cloudinary-src="projects.ecommerce.cover" src=""/>
+<div class="project-card-vignette"></div>
+<div class="project-card-topline">
+<div aria-label="Technology stack" class="project-stack-list">
+<span class="project-stack-chip"><img alt="React logo" class="tech-logo" src="https://cdn.simpleicons.org/react/61DAFB"/> React</span>
+<span class="project-stack-chip"><img alt="Node.js logo" class="tech-logo" src="https://cdn.simpleicons.org/nodedotjs/5FA04E"/> Node.js</span>
+<span class="project-stack-chip"><img alt="Stripe logo" class="tech-logo" src="https://cdn.simpleicons.org/stripe/635BFF"/> Stripe</span>
+</div>
+<span class="project-open-hint"><i class="fas fa-expand"></i> View project</span>
+</div>
+<div class="project-card-copy">
+<span class="project-type">Full-stack Web Application</span>
+<h3>E-Commerce Dashboard</h3>
+<p>A comprehensive platform for buying and selling electronics with real-time inventory management, secure payment flow, order monitoring, and a clean responsive dashboard experience.</p>
+<div class="project-card-actions" onclick="event.stopPropagation()">
+<a class="project-link-btn primary" data-project-link="live" href="#" onclick="return handleProjectLink(event, 'Live Demo')"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a class="project-link-btn" data-project-link="github" href="#" onclick="return handleProjectLink(event, 'GitHub')"><i class="fab fa-github"></i> GitHub</a>
+</div>
+</div>
+</div>
+</article>
+<article aria-label="Open Real-time Chat App project details" class="project-showcase-card project-carousel-slide" data-project="chat" onclick="openProjectModal('chat')" onkeydown="handleProjectCardKey(event, 'chat')" role="button" tabindex="0">
+<div class="project-card-media">
+<img alt="Real-time Chat App system preview" data-cloudinary-src="projects.chat.cover" src=""/>
+<div class="project-card-vignette"></div>
+<div class="project-card-topline">
+<div aria-label="Technology stack" class="project-stack-list">
+<span class="project-stack-chip"><img alt="Vue.js logo" class="tech-logo" src="https://cdn.simpleicons.org/vuedotjs/4FC08D"/> Vue.js</span>
+<span class="project-stack-chip"><img alt="Tailwind CSS logo" class="tech-logo" src="https://cdn.simpleicons.org/tailwindcss/06B6D4"/> Tailwind CSS</span>
+<span class="project-stack-chip"><img alt="Firebase logo" class="tech-logo" src="https://cdn.simpleicons.org/firebase/DD2C00"/> Firebase</span>
+</div>
+<span class="project-open-hint"><i class="fas fa-expand"></i> View project</span>
+</div>
+<div class="project-card-copy">
+<span class="project-type">Real-time Communication Platform</span>
+<h3>Real-time Chat App</h3>
+<p>A messaging platform with room-based conversations, media sharing, user presence, and a clean responsive communication interface.</p>
+<div class="project-card-actions" onclick="event.stopPropagation()">
+<a class="project-link-btn primary" data-project-link="live" href="#" onclick="return handleProjectLink(event, 'Live Demo')"><i class="fas fa-arrow-up-right-from-square"></i> Live Demo</a>
+<a class="project-link-btn" data-project-link="github" href="#" onclick="return handleProjectLink(event, 'GitHub')"><i class="fab fa-github"></i> GitHub</a>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<div aria-label="Project carousel controls" class="project-carousel-controls">
+<button aria-label="Show previous project" class="project-carousel-btn" id="project-carousel-prev" type="button"><i class="fas fa-chevron-left"></i></button>
+<button aria-label="Show next project" class="project-carousel-btn" id="project-carousel-next" type="button"><i class="fas fa-chevron-right"></i></button>
+</div>
+<div aria-label="Project slide indicators" class="project-carousel-indicators" id="project-carousel-indicators"></div>
+</div>
+</div>
+</section>
+<!-- Contact -->
+<section class="section" id="contact">
+<div class="container contact-container hidden-animate">
+<div class="section-header">
+<span class="tag">Contact</span>
+<h2>Let's <span class="gradient-text">Collaborate</span></h2>
+<p>Have a project in mind or want to discuss the latest tech? I'm just a message away.</p>
+</div>
+<div class="contact-card glass">
+<div class="contact-actions">
+<a class="btn-primary btn-large" href="mailto:johnchristian.lor@email.com">
+<i class="fas fa-envelope"></i> Send Email
+                    </a>
+<div class="social-row">
+<a class="social-btn" href="https://github.com/johnchristianlor" rel="noopener noreferrer" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+<a class="social-btn" href="https://www.linkedin.com/in/johnchristianlor13/" rel="noopener noreferrer" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+<a class="social-btn" href="https://www.facebook.com/johnchristian.xiii" rel="noopener noreferrer" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<p>© 2026 John Christian Lor. Built with <i class="fas fa-heart" style="color:var(--primary)"></i>.</p>
+</footer>
+<script src="cloudinary-config.js"></script><script src="script.js"></script>
+<script>
+    const ASSET_CONFIG = window.CLOUDINARY_ASSETS || {};
+    const PROFILE_ASSETS = ASSET_CONFIG.profile || {};
+    const SOUND_ASSETS = ASSET_CONFIG.sounds || {};
+    const FRAME_CONFIG = {
+        fps: Number(PROFILE_ASSETS.frameDelay) || 80,
+        dayFrame: PROFILE_ASSETS.day || '',
+        nightFrame: PROFILE_ASSETS.night || PROFILE_ASSETS.day || '',
+        toNight: Array.isArray(PROFILE_ASSETS.toNightFrames) ? PROFILE_ASSETS.toNightFrames.filter(Boolean) : [],
+        toDay: Array.isArray(PROFILE_ASSETS.toDayFrames) ? PROFILE_ASSETS.toDayFrames.filter(Boolean) : [],
+    };
+
+    (function () {
+        const html        = document.documentElement;
+        const btn         = document.getElementById('themeToggle');
+        const frameImg    = document.getElementById('profileFrame');
+        const themeSoundUrl = SOUND_ASSETS.themeToggle || '';
+        const themeSound = themeSoundUrl ? new Audio(themeSoundUrl) : null;
+        const STORAGE_KEY = 'jclor-theme';
+        let   animating   = false;
+        let   currentMode;
+
+        if (themeSound) {
+            themeSound.preload = 'auto';
+            themeSound.volume = 0.65;
+        }
+
+        const saved = 'light';
+        currentMode = saved;
+        html.setAttribute('data-theme', saved);
+        localStorage.setItem(STORAGE_KEY, saved);
+        if (FRAME_CONFIG.dayFrame) frameImg.src = FRAME_CONFIG.dayFrame;
+        updateThemeButton();
+
+        const allFrames = [
+            FRAME_CONFIG.dayFrame,
+            FRAME_CONFIG.nightFrame,
+            ...FRAME_CONFIG.toNight,
+            ...FRAME_CONFIG.toDay,
+        ];
+        allFrames.filter(Boolean).forEach(url => { const img = new Image(); img.src = url; });
+
+        btn.addEventListener('click', () => {
+            if (animating) return;
+
+            if (themeSound) {
+                themeSound.pause();
+                themeSound.currentTime = 0;
+                themeSound.play().catch(() => {
+                    // The theme switch still works if the browser blocks audio playback.
+                });
+            }
+
+            const rip = document.createElement('span');
+            rip.className = 't-ripple';
+            btn.appendChild(rip);
+            rip.addEventListener('animationend', () => rip.remove(), { once: true });
+
+            const goingDark = currentMode === 'light';
+            const frames    = goingDark ? FRAME_CONFIG.toNight : FRAME_CONFIG.toDay;
+            const endFrame  = goingDark ? FRAME_CONFIG.nightFrame : FRAME_CONFIG.dayFrame;
+            const nextMode  = goingDark ? 'dark' : 'light';
+
+            const themeDelay = frames.length ? Math.floor(frames.length / 2) * FRAME_CONFIG.fps : 0;
+            setTimeout(() => {
+                html.setAttribute('data-theme', nextMode);
+                localStorage.setItem(STORAGE_KEY, nextMode);
+                currentMode = nextMode;
+                updateThemeButton();
+            }, themeDelay);
+
+            if (frames.length) {
+                playFrames(frames, endFrame);
+            } else if (endFrame) {
+                frameImg.src = endFrame;
+            }
+        });
+
+        function playFrames(frames, finalFrame) {
+            animating = true;
+            let i = 0;
+            function step() {
+                if (i < frames.length) {
+                    frameImg.src = frames[i];
+                    i++;
+                    setTimeout(step, FRAME_CONFIG.fps);
+                } else {
+                    if (finalFrame) frameImg.src = finalFrame;
+                    animating = false;
+                }
+            }
+            step();
+        }
+
+        function updateThemeButton() {
+            const targetMode = currentMode === 'dark' ? 'light' : 'night';
+            const label = `Switch to ${targetMode} mode`;
+            btn.setAttribute('aria-label', label);
+            btn.setAttribute('title', label);
+        }
+
+        const canvas = document.getElementById('toggleStars');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            const W = canvas.width;
+            const stars = Array.from({ length: 12 }, () => ({
+                x: Math.random() * W, y: Math.random() * W,
+                r: Math.random() * 1.2 + 0.3,
+                a: Math.random(), spd: Math.random() * 0.018 + 0.005,
+                dir: Math.random() > 0.5 ? 1 : -1
+            }));
+            (function tick() {
+                ctx.clearRect(0, 0, W, W);
+                stars.forEach(s => {
+                    s.a += s.spd * s.dir;
+                    if (s.a > 1 || s.a < 0) s.dir *= -1;
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,255,${Math.max(0, Math.min(1, s.a)).toFixed(2)})`;
+                    ctx.fill();
+                });
+                requestAnimationFrame(tick);
+            })();
+        }
+    })();
+    </script>
+</body>
+</html>
